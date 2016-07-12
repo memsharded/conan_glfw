@@ -2,7 +2,7 @@
 glfw/3.2@GavinNL/testing
 
 [options]
-glfw:shared=True
+glfw:shared=False
 
 [generators]
 cmake

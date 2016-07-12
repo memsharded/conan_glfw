@@ -10,3 +10,19 @@ No implementation for MacoOS. I do not have a Mac so I have no idea how to compi
 
 # Please submit pull requests if you can improve this.
 
+
+
+# Compiling/Testing instructions On Linux
+
+cd to the directory that contains conanfile.py
+
+conan export GavinNL/testing
+conan install glfw/3.2@GavinNL/testing --build
+cd test
+mkdir build
+cd build
+conan install ..
+cmake ..
+make
+cd bin
+./glfw_test

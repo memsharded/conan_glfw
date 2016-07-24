@@ -2,11 +2,11 @@ from conans import ConanFile, CMake
 import os
 
 channel = os.getenv("CONAN_CHANNEL", "stable")
-username = os.getenv("CONAN_USERNAME", "memsharded")
+username = os.getenv("CONAN_USERNAME", "GavinNL")
 
-class ZMQTestConan(ConanFile):
+class GLFWTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    requires = "glfw/3.2@GavinNL/testing"
+    requires = "glfw/3.2@%s/%s" % (username, channel)
     generators = "cmake"
 
     def build(self):

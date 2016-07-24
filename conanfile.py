@@ -53,7 +53,8 @@ conan_basic_setup()
         self.run("cmake --build . --target install %s" % cmake.build_config)
 
     def package( self ): 
-        pass # already installed in build
+        # almost everything already installed in build, but dll
+        self.copy("*.dll", "bin", "bin")
     
     def package_info( self ):
         if self.settings.os == "Linux":
@@ -61,7 +62,10 @@ conan_basic_setup()
                                   "Xext" , "Xcursor", "Xrender" , "Xfixes", "X11", "pthread", 
                                   "xcb" , "Xau", "Xdmcp", "GL", "GLEW" ]
         elif self.settings.os == "Windows":
-            self.cpp_info.libs = [ "glfw3", "opengl32" ]
+            if self.options.shared:
+                self.cpp_info.libs = [ "glfw3dll", "opengl32" ]
+            else:
+                self.cpp_info.libs = [ "glfw3", "opengl32" ]
         elif self.settings.os == "Macos":
             self.cpp_info.libs = [ "glfw3", "GL", "GLEW" ]
 

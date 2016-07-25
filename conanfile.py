@@ -30,9 +30,10 @@ conan_basic_setup()
 
     def system_requirements( self ):
         if self.settings.os == "Linux":
-            self.run( 'sudo apt-get install xorg-dev' )
-            self.run( 'sudo apt-get install libgl1-mesa-dev' )
-            self.run( 'sudo apt-get install libglew-dev' )
+            self.run( 'sudo apt-get install xorg-dev -y' )
+            self.run( 'sudo apt-get install libgl1-mesa-dev -y' )
+            self.run( 'sudo apt-get install libglew-dev -y' )
+            self.run('sudo apt-get install libXxf86vm-dev -y') # Travis
         elif self.settings.os == "Macos":
             print( "  ***************** Need Help here **************** " )
             print( "  Mac OS not implemented yet. Please help out! **** " )
